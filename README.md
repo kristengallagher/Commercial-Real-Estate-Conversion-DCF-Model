@@ -42,12 +42,12 @@ The conversion strategy increases projected rental income by 11.5% relative to r
 |---|---|---|
 | Commercial Rental Rate | $26.13/sqft | PropertyShark: Maricopa County |
 | Rental Growth Rate | 2.2% | General inflation rate (BLS, Dec 2023) |
-| Vacancy & Loss | 5.0% of PGI | Given |
+| Vacancy & Loss | 5.0% of PGI | Standard |
 | CapEx Allowance | 10.0% of EGI | Given |
-| Managerial Expense | 10.0% of EGI | Given |
+| Managerial Expense | 10.0% of EGI | Estimated |
 | Property Tax Rate | 4.7% | Maricopa County |
 | Insurance | $2,359/yr | MarketWatch: Arizona Homeowners Insurance |
-| Selling Costs | 5.0% of exit value | Given |
+| Selling Costs | 5.0% of exit value | Givem |
 | Going-In Cap Rate | 7.5% | Given |
 | Terminal Cap Rate | 7.0% | Given |
 | Discount Rate (Unlev) | 7.0% | Given |
