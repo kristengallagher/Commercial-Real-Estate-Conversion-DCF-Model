@@ -1,144 +1,253 @@
-# Commercial Real Estate Levered DCF Model
-## Residential-to-Commercial Conversion 
+# Commercial Real Estate DCF Valuation Model
+### Residential-to-Commercial Conversion & Repositioning Analysis
 
-Six-year pro forma leveraged DCF model underwriting the acquisition and repositioning of a residentially-zoned property for commercial use. Built for a real estate finance course project at the Darla Moore School of Business.
+## Overview
 
-## Property Overview
+This model underwrites the acquisition and conversion of a residentially-zoned property for commercial usethrough DCF valuation. It projects stabilized 6-year operating cash flows, models debt financing, and calculates both unlevered and levered equity returns.
 
-| Detail | Value |
-|---|---|
-| Address | 909 W Tamarisk St, Phoenix, AZ 85041 |
-| List Price | $345,000 |
-| Square Footage | 2,004 sq ft |
-| Current Zoning | R1-8 (Residential) |
-| Proposed Use | Commercial Business |
-| County | Maricopa |
-| Holding Period | 6 Years |
+> [!NOTE]
+> This model assumes the property is acquisition-ready for commercial conversion. Upfront zoning and buildout costs are not modeled separately.## Key Features
 
----
+- Commercial cash flow projections (5-year holding period)
+- Leveraged & unlevered DCF analysis
+- Operating income & expense modeling with inflation
+- Debt service calculations (30-year amortization, LTV-based financing)
+- Exit value analysis via cap rate method
+- Equity return metrics (Levered IRR, NPV, DSCR)
+- Sensitivity analysis on cap rates and growth assumptions
 
-## Investment Thesis
 
-The property is acquired at residential pricing under R1-8 zoning and repositioned as a commercial retail space. R1-8 zoning designation allows for mixed-use redevelopment, enabling a conversion that captures the spread between residential acquisition pricing and commercial rental income of $26.13/sqft.
+## Model Components
 
-The conversion strategy increases projected rental income by 11.5% relative to residential use, while the going-in cap rate of 7.5% versus the terminal cap rate of 7.0% reflects expected stabilization and value creation over the 6 year holding period.
+### Property Profile
 
----
+- **Address:** `909 W Tamarisk St, Phoenix, AZ 85041`
+- **Current Zoning:** `R1-8 (Residential)`
+- **Square Footage:** `2,004 SF`
+- **Acquisition Price:** `$345,000`
+- **Projected Use:** `Commercial Retail (urban location)`
+- **Company:** `Haute (Retail business)`
 
-## Model Structure
+![Property](images/Property_Details.png)
 
-| Tab | Description |
-|---|---|
-| Company | Borrower and business profile |
-| Property | Property-level inputs and rental assumptions |
-| Data | Market assumptions, rates, loan parameters, and sourced data |
-| CF Projections | Six-year NOI projections, levered/unlevered cash flows, IRR, NPV, and DSR |
 
----
+### Real Estate Market Assumptions (Phoenix Central Phoenix)**
+
+- **Residential Rental Rate:** `$1.66/SF` _(declining -4.5% annually)_
+- **Commercial Rental Rate:** `$26.13/SF` _(growing 2.2% annually)_
+- **Property Tax Rate:** `4.7%`
+- **General Inflation Rate:** `2.2%`
+- **Mortgage Rate:** `5.875%` _(30-year amortization)_
 
 ## Key Assumptions
 
-| Assumption | Value | Source |
-|---|---|---|
-| Commercial Rental Rate | $26.13/sqft | PropertyShark: Maricopa County |
-| Rental Growth Rate | 2.2% | General inflation rate (BLS, Dec 2023) |
-| Vacancy & Loss | 5.0% of PGI | Standard |
-| CapEx Allowance | 10.0% of EGI | Given |
-| Managerial Expense | 10.0% of EGI | Estimated |
-| Property Tax Rate | 4.7% | Maricopa County |
-| Insurance | $2,359/yr | MarketWatch: Arizona Homeowners Insurance |
-| Selling Costs | 5.0% of exit value | Givem |
-| Going-In Cap Rate | 7.5% | Given |
-| Terminal Cap Rate | 7.0% | Given |
-| Discount Rate (Unlev) | 7.0% | Given |
-| Discount Rate (Lev) | 9.0% | Given |
-| LTV | 75% | Given |
-| Commercial Mortgage Rate | 5.875% | Market (Forbes Advisor) |
-| Amortization | 30 Years | Given |
-| Upfront Financing Costs | 3.0% | Given |
+- **5-year hold:** Stabilization through Year 5, exit via cap rate sale
+- **LTV 75%:** Moderate leverage typical for stabilized retail; reduces downside but impacts returns
+- **5% vacancy:** Retail vacancy allowance for Central Phoenix market
+- **10% CapEx reserve:** Annual building maintenance & capital replacement
+- **Growth:** 2.2% annual escalation on commercial rents; residential declining -4.5%
+- **Inflation:** 2.2% applied to taxes, insurance, labor costs
+- **DSCR requirement:** 1.25x minimum (underwriting standard)
+- **Exit strategy:** Cap rate sale at 7.0% (conservative vs. going-in 7.5%)
 
----
+![Data](images/Data_DCF.png)
+### Revenue Projections (Post-Conversion)
 
-## Market Research Summary
+* Potential Gross Income (PGI)
 
-**Rental Market:** Phoenix residential rents declined approximately 4.5% YoY in 2023. The model uses the general inflation rate of 2.2% for commercial rent escalation, consistent with stabilized retail leasing assumptions in the Phoenix market.
+```python
+Year 1 PGI = Commercial Rent Rate ($26.13/SF) × Property SF (2,004)
+PGI_Growth = PGI × (1 + 2.2% annual growth)
+```
 
-**Property Taxes:** Maricopa County passed the largest tax rate cut in its history in January 2023, providing a favorable tax environment despite rising property values.
+* Effective Gross Income (EGI)
 
-**Mortgage Rate:** Commercial mortgage rates started at 5.24% at time of analysis, with the model using 5.875% to portray a conservative assumption.
+```python
+EGI = PGI - Vacancy Loss (5% of PGI) + Recoveries
+Recoveries = Property Tax + Insurance (tenant-recoverable)
+```
 
-**Economic Outlook:** Phoenix economy projected to strengthen with recent tax cuts, federal funds rate reduction from 5.33% to 4.6%, and government focus on job creation and housing.
+### Operating Expense Projections
 
----
+* Property Taxes (escalating annually)
 
-## Financial Results
+```python
+Year 1 Property Tax = Property Value × 4.7% Tax Rate × (1 + 2.2% inflation)
+Years 2-5 = Prior Year Tax × (1 + Growth Rate)
+```
+
+* Property Insurance
+
+```python
+Annual Insurance = $2,359 (fixed, escalates at 2.2% inflation)
+```
+
+* Management Expense
+
+```python
+Managerial = 10% of EGI (Year 1-5)
+```
+
+* Capital Expenditure Reserve
+
+```python
+CapEx Allowance = 10% of EGI (annual building maintenance reserve)
+```
+
+### Net Operating Income & Debt Service
+
+* Gross Operating Income
+
+```python
+GOI = EGI + Total Expenses
+```
+
+* Net Operating Income (NOI)
+
+```python
+NOI = GOI - CapEx Allowance
+```
+
+* Debt Service Calculations
+
+```python
+Loan Amount = LTV × Acquisition Price = 75% × $345,000
+Interest Rate: 5.875% (30-year amortization)
+Monthly Payment = PMT(5.875%/12, 360 months, Loan Amount)
+Annual Debt Service = Monthly Payment × 12
+Upfront Financing Costs = 3% of Loan Amount
+Loan Proceeds = Loan Amount - Financing Costs
+```
+> [!TIP]
+> Adjust inputs in the Data tab to stress-test different financing scenarios (LTV, rate, term).
+
+* Debt Service Coverage Ratio (DSCR)
+
+```python
+DSCR = NOI / Annual Debt Service
+Underwriting guideline: Minimum 1.25x
+```
+
+### Exit & Terminal Value
+
+* Year 5 Exit Value (Cap Rate Method)
+
+```python
+Terminal Cap Rate: 7.0% (given)
+Going-in Cap Rate: 7.5% (given)
+Exit Value (Year 5) = Year 6 NOI / Terminal Cap Rate
+Implied NOI Yr6 = Year 5 NOI × (1 + growth)
+```
+
+* Sale Proceeds & Loan Payoff
+
+```python
+Sales Price = Exit Value (cap rate-based)
+Selling Costs = 5% of Sales Price
+Loan Balance at End of Hold = PV of remaining payments
+Net Proceeds = Sales Price - Selling Costs - Loan Payoff
+```
+
+### Return Metrics
+
+* Unlevered DCF
+
+```python
+Unlevered IRR = IRR of annual NOI (Years 1-5) + Exit Value
+Unlevered NPV = NPV of cash flows at 7.0% discount rate
+```
+
+* Levered DCF
+
+```python
+Levered IRR = IRR of after-debt-service cash flows (Years 1-5) + Net Exit Proceeds
+Levered NPV = NPV of levered cash flows at 9.0% discount rate
+```
+
+* Offer Price Analysis
+
+```python
+Offer Price = MIN(95% of Unlevered PV, Acquisition Price)
+```
+
+![DCF](images/DCF.png)
+
+## File Structure
+
+#### Commercial_Real_Estate_DCF_Model.xlsx
+
+1. **Property** — Property address, zoning, rental rates, annual income calculations
+2. **Data** — Market assumptions, financing terms, cap rates, holding period, expense assumptions
+3. **CF Projections** — 5-year operating income, expenses, NOI, debt service, and exit analysis
 
 | Metric | Value |
 |---|---|
-| Levered IRR | 39.6% |
-| Unlevered IRR | 19.0% |
-| NPV (Unleveraged, 7%) | $192,083 |
-| NPV (Leveraged, 9%) | $173,418 |
-| Debt Service Coverage Ratio | 1.94x |
-| Equity Multiple | 4.20x |
-| Offer Price | $345,000 |
-| Exit Value (Terminal) | $568,011 |
-| Total Lender Return | $18,367/yr |
-| Loan Proceeds | $250,988 |
+| Acquisition Price | $345,000 |
+| LTV / Leverage | 75% / 0.75 |
+| Loan Amount | $258,750 |
+| Financing Costs (3%) | $7,763 |
+| Loan Proceeds | $251,000 |
+| Interest Rate | 5.875% |
+| Amortization Period | 30 years |
+| Holding Period | 5 years |
+| Commercial Rent Rate | $26.13/SF |
+| Property Size | 2,004 SF |
+| Year 1 PGI | ~$52,433 |
+| Going-in Cap Rate | 7.5% |
+| Terminal Cap Rate | 7.0% |
+| Discount Rate (Unlevered) | 7.0% |
+| Discount Rate (Levered) | 9.0% |
 
----
+## Valuation Summary
 
-## Cash Flow Summary
+The model calculates returns across **two scenarios:**
 
-| Year | NOI | Levered CF |
-|---|---|---|
-| 0 (Acquisition) | : | ($94,013) |
-| 1 | $35,662 | $17,294 |
-| 2 | $36,446 | $18,079 |
-| 3 | $37,248 | $18,881 |
-| 4 | $38,067 | $19,700 |
-| 5 (Exit) | $38,905 + $568,011 | $319,745 |
+1. **Unlevered** — Assumes 100% equity financing (no debt); represents property-level returns
+2. **Levered** — Assumes 75% LTV debt; represents equity investor returns after debt service & payoff
 
----
+Levered returns are higher if DSCR > 1.0x (leverage is accretive). If DSCR < 1.0x, property generates negative cash flow and leverage destroys returns.
 
-## Technical Highlights
+## Tools
 
-**Financial Modeling**
-- Six-year levered and unlevered pro forma DCF
-- Direct capitalization exit methodology (NOI Year 6 ÷ Terminal Cap Rate)
-- NNN lease structure: recoveries (property tax + insurance) kept positive on income side
-- NOI → Levered cash flows with full debt service and loan payoff at exit
-- Named ranges throughout for auditable formula architecture
+- Microsoft Excel: dynamic formulas, named ranges, PMT/PV functions, IRR/NPV calculations
 
-**Credit & Underwriting**
-- Debt Service Coverage Ratio (DSR) analysis
-- LTV-based loan sizing with upfront financing cost deduction
-- Remaining loan balance (HP Balance) calculated via PV function
-- Going-in cap rate implied value check against acquisition price
+## Sources
 
-**Market Analysis**
-- Benchmarked going-in cap rate (7.5%) against Maricopa County comparables
-- Sourced rental rates from PropertyShark commercial market data
-- Incorporated Phoenix inflation, tax, and mortgage rate environment
-- Identified conversion premium between residential acquisition and commercial income
+1. **Apartment List** — Phoenix, AZ Rental Market Data (2023-2024)
+   - https://www.renthop.com/average-rent-in/phoenix-az
 
-**Tools**
-- Microsoft Excel - dynamic formulas; IRR, NPV, PMT, PV, MIN, NOI functions
----
+2. **KTAR News** — Maricopa County Tax Rate Cut (January 2023)
 
-## Risk Analysis
+3. **Forbes Advisor** — Commercial Mortgage Rates (2023)
 
-| Risk | Description | Mitigant |
-|---|---|---|
-| Rezoning Execution | R1-8 zoning approval for commercial use not guaranteed | Cap rate spread compensates for conversion risk; once stabilized property should re-rate |
-| Lease-Up Risk | Commercial conversion assumes immediate full occupancy | 5% vacancy factor applied throughout holding period |
-| Rental Growth | Phoenix market showed -4.5% residential rent decline in 2023 | Model uses conservative 2.2% commercial escalation tied to inflation |
-| Interest Rate Risk | Rising rates increase debt service burden | Fixed-rate 30-year commercial mortgage locks in 5.875% |
+4. **Bureau of Labor Statistics** — U.S. Inflation Rate (December 2023): 2.71%
 
----
+5. **City of Phoenix Planning & Development** — R1-8 Zoning District Regulations
+   - https://www.phoenix.gov/pddsite/Documents/PZ/pdd_pz_pdf_00284.pdf
 
+6. **Phoenix Municipal Code** — Zoning Ordinance §612
+   - https://phoenix.municipal.codes/ZO/612
+
+7. **National Association of Realtors** — Impact of Retail on Surrounding Property Values
+
+8. **Journal of the American Heart Association** — Walkability & Cardiovascular Disease Risk
+   - https://www.ahajournals.org/doi/10.1161/JAHA.119.013146
+
+9. **PropertyShark** — Phoenix Commercial Lease Rates (Maricopa County)
+   - https://www.propertyshark.com/cre/commercial-real-estate/us/az/maricopa-county/
+
+10. **MarketWatch** — Arizona Homeowners Insurance Costs
+    - https://www.marketwatch.com/guides/insurance-services/homeowners-insurance-arizona/
+
+11. **Common Sense Institute Arizona** — Arizona Inflation Reports
+    - https://commonsenseinstituteaz.org/research-issues/inflation-reports/
+
+12. **UtilitiesOne** — Impact of Retail & Commercial Development on Residential Neighborhoods
+    - https://utilitiesone.com/the-impact-of-retail-and-commercial-developments-on-residential-neighborhoods
+      
 ## Disclaimer
 
+> [!CAUTION]
 *Built independently; Property data sourced from publicly available market data. All projections are estimates based on stated assumptions. Not investment advice.*
 
 ## License
