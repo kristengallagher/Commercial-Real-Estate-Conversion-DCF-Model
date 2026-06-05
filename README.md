@@ -11,7 +11,7 @@ Six-year pro forma leveraged DCF model underwriting the acquisition and repositi
 | List Price | $345,000 |
 | Square Footage | 2,004 sq ft |
 | Current Zoning | R1-8 (Residential) |
-| Proposed Use | Commercial Retail conversion |
+| Proposed Use | Commercial Business |
 | County | Maricopa |
 | Holding Period | 6 Years |
 
