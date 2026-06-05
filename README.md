@@ -1,8 +1,7 @@
 # Commercial Real Estate Levered DCF Model
 ## Residential-to-Commercial Conversion 
 
-Six-year pro forma leveraged DCF model underwriting the acquisition and repositioning of a residentially-zoned property as a commercial business.
-
+Six-year pro forma leveraged DCF model underwriting the acquisition and repositioning of a residentially-zoned property for commercial use. Built for a real estate finance course project at the Darla Moore School of Business.
 
 ## Property Overview
 
