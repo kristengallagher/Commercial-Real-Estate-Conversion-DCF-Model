@@ -1,9 +1,7 @@
 # Commercial Real Estate DCF Model
 ## Residential-to-Commercial Conversion 
 
-Six-year pro forma leveraged DCF model for a residential to commercial conversion in Phoenix, AZ; projecting NOI, CapEx, and terminal value to yield a 39.6% levered IRR, 1.94x DSCR, and $192,083 NPV.
-
-A six-year leveraged pro forma DCF model underwriting the acquisition and repositioning of a residentially-zoned property as a commercial property (retail store). Built as part of a university real estate finance course at the Darla Moore School of Business, University of South Carolina.
+Six-year pro forma leveraged DCF model underwriting the acquisition and repositioning of a residentially-zoned property as a commercial property (retail store). Built as part of a university real estate finance course at the Darla Moore School of Business.
 
 ---
 
@@ -23,9 +21,9 @@ A six-year leveraged pro forma DCF model underwriting the acquisition and reposi
 
 ## Investment Thesis
 
-The property is acquired at residential pricing under R1-8 zoning and repositioned as a commercial retail space. The R1-8 zoning designation allows for mixed-use redevelopment, enabling a conversion that captures the spread between residential acquisition pricing and commercial rental income of $26.13/sqft, a significant value-add opportunity.
+The property is acquired at residential pricing under R1-8 zoning and repositioned as a commercial retail space. R1-8 zoning designation allows for mixed-use redevelopment, enabling a conversion that captures the spread between residential acquisition pricing and commercial rental income of $26.13/sqft.
 
-The conversion strategy increases projected rental income by 11.5% relative to residential use, while the going-in cap rate of 7.5% versus the terminal cap rate of 7.0% reflects expected stabilization and value creation over the holding period.
+The conversion strategy increases projected rental income by 11.5% relative to residential use, while the going-in cap rate of 7.5% versus the terminal cap rate of 7.0% reflects expected stabilization and value creation over the 6 year holding period.
 
 ---
 
@@ -44,13 +42,13 @@ The conversion strategy increases projected rental income by 11.5% relative to r
 
 | Assumption | Value | Source |
 |---|---|---|
-| Commercial Rental Rate | $26.13/sqft | PropertyShark — Maricopa County |
+| Commercial Rental Rate | $26.13/sqft | PropertyShark: Maricopa County |
 | Rental Growth Rate | 2.2% | General inflation rate (BLS, Dec 2023) |
 | Vacancy & Loss | 5.0% of PGI | Given |
 | CapEx Allowance | 10.0% of EGI | Given |
 | Managerial Expense | 10.0% of EGI | Given |
 | Property Tax Rate | 4.7% | Maricopa County |
-| Insurance | $2,359/yr | MarketWatch — Arizona Homeowners Insurance |
+| Insurance | $2,359/yr | MarketWatch: Arizona Homeowners Insurance |
 | Selling Costs | 5.0% of exit value | Given |
 | Going-In Cap Rate | 7.5% | Given |
 | Terminal Cap Rate | 7.0% | Given |
@@ -69,7 +67,7 @@ The conversion strategy increases projected rental income by 11.5% relative to r
 
 **Property Taxes:** Maricopa County passed the largest tax rate cut in its history in January 2023, providing a favorable tax environment despite rising property values.
 
-**Mortgage Rate:** Commercial mortgage rates started at 5.24% at time of analysis, with the model using 5.875% to reflect a conservative assumption.
+**Mortgage Rate:** Commercial mortgage rates started at 5.24% at time of analysis, with the model using 5.875% to portray a conservative assumption.
 
 **Economic Outlook:** Phoenix economy projected to strengthen with recent tax cuts, federal funds rate reduction from 5.33% to 4.6%, and government focus on job creation and housing.
 
@@ -96,7 +94,7 @@ The conversion strategy increases projected rental income by 11.5% relative to r
 
 | Year | NOI | Levered CF |
 |---|---|---|
-| 0 (Acquisition) | — | ($94,013) |
+| 0 (Acquisition) | : | ($94,013) |
 | 1 | $35,662 | $17,294 |
 | 2 | $36,446 | $18,079 |
 | 3 | $37,248 | $18,881 |
@@ -110,9 +108,9 @@ The conversion strategy increases projected rental income by 11.5% relative to r
 **Financial Modeling**
 - Six-year levered and unlevered pro forma DCF
 - Direct capitalization exit methodology (NOI Year 6 ÷ Terminal Cap Rate)
-- NNN lease structure — recoveries (property tax + insurance) kept positive on income side
+- NNN lease structure: recoveries (property tax + insurance) kept positive on income side
 - NOI → Levered cash flows with full debt service and loan payoff at exit
-- Named ranges throughout for clean, auditable formula architecture
+- Named ranges throughout for auditable formula architecture
 
 **Credit & Underwriting**
 - Debt Service Coverage Ratio (DSR) analysis
@@ -127,9 +125,7 @@ The conversion strategy increases projected rental income by 11.5% relative to r
 - Identified conversion premium between residential acquisition and commercial income
 
 **Tools**
-- Microsoft Excel — named ranges, dynamic formulas, IRR, NPV, PMT, PV, MIN, NOI functions
-- Structured tab architecture with Data, Property, and CF Projections separation
-
+- Microsoft Excel - dynamic formulas; IRR, NPV, PMT, PV, MIN, NOI functions
 ---
 
 ## Risk Analysis
@@ -145,10 +141,10 @@ The conversion strategy increases projected rental income by 11.5% relative to r
 
 ## Disclaimer
 
-*Built independently as a university course project. Property data sourced from publicly available market data. All projections are estimates based on stated assumptions. Not investment advice.*
+*Built independently; Property data sourced from publicly available market data. All projections are estimates based on stated assumptions. Not investment advice.*
 
 ## License
 
 © 2025 Kristen Gallagher. All rights reserved.
 
-This work is made available for viewing and reference purposes only. You may not reproduce, distribute, modify, or claim this work as your own without explicit written permission from the author. If you reference this work, appropriate credit must be given to Kristen Gallagher with a link to this repository.
+This work is made available for viewing and reference purposes only. Reproduction, distribution, modification, or use of this work without explicit written permission from the author is strictly prohibited. Any reference to this work must include appropriate credit to the author.
