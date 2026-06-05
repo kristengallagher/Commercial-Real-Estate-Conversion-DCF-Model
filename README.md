@@ -1,9 +1,8 @@
-# Commercial Real Estate DCF Model
+# Commercial Real Estate Levered DCF Model
 ## Residential-to-Commercial Conversion 
 
 Six-year pro forma leveraged DCF model underwriting the acquisition and repositioning of a residentially-zoned property as a commercial property (retail store). Built as part of a university real estate finance course at the Darla Moore School of Business.
 
----
 
 ## Property Overview
 
@@ -13,7 +12,7 @@ Six-year pro forma leveraged DCF model underwriting the acquisition and repositi
 | List Price | $345,000 |
 | Square Footage | 2,004 sq ft |
 | Current Zoning | R1-8 (Residential) |
-| Proposed Use | High-End Women's Retail Boutique |
+| Proposed Use | Commercial Retail conversion |
 | County | Maricopa |
 | Holding Period | 6 Years |
 
